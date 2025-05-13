@@ -25,6 +25,12 @@ class Funcionario:
         nome_quebrado = nome_completo.split(' ')
         return nome_quebrado[-1]
     
+    def decresimo_salario(self):
+        sobrenomes = ['Braganca', 'Windsor', 'Bourbon', 'Al Saud', 'Khan', 'Tudor', 'Ptolomeu']
+        if self.salario >= 100000 and (self.sobrenome() in sobrenomes):
+            decresimo = self.salario * 0.1
+            self._salario = self._salario - decresimo
+        
     def calcular_bonus(self):
         valor = self._salario * 0.1
         if valor > 1000:

@@ -24,3 +24,19 @@ class TestClass:
 
         #then-resultado
         assert resultado == esperado, f'Erro: {resultado} != {esperado}'
+
+    def test_decresimo_salario(self):
+
+        #given-contexto
+        entrada = 100000
+        entrada_nome = 'Paulo Braganca'
+        esperado = 90000
+
+        #when-acao
+        funcionario_teste = Funcionario(entrada_nome, '19/05/2003', entrada)
+        funcionario_teste.decresimo_salario()
+        resultado = funcionario_teste.salario
+
+        #then-resultado
+        assert resultado == esperado, f'Erro: {resultado} != {esperado}'
+    

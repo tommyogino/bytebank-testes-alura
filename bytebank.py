@@ -25,16 +25,21 @@ class Funcionario:
         nome_quebrado = nome_completo.split(' ')
         return nome_quebrado[-1]
     
-    def decresimo_salario(self):
+    def _eh_socio(self):
         sobrenomes = ['Braganca', 'Windsor', 'Bourbon', 'Al Saud', 'Khan', 'Tudor', 'Ptolomeu']
-        if self.salario >= 100000 and (self.sobrenome() in sobrenomes):
-            decresimo = self.salario * 0.1
-            self._salario = self._salario - decresimo
+        return (self._salario >= 100000 and self.sobrenome() in sobrenomes)
+        # Método privado para verificar se o funcionário é sócio
+        # de acordo com o sobrenome e o salário 
+
+    def decresimo_salario(self):
+            if self._eh_socio():
+                decresimo = self.salario * 0.1
+                self._salario = self._salario - decresimo
         
     def calcular_bonus(self):
         valor = self._salario * 0.1
         if valor > 1000:
-            valor = 0
+            raise Exception('Salario muito alto para receber bonus')
         return valor
 
     def __str__(self):

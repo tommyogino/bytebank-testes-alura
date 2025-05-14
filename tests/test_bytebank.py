@@ -1,4 +1,5 @@
 from bytebank import Funcionario
+import pytest
 class TestClass:
 
     def test_idade(self):
@@ -39,4 +40,31 @@ class TestClass:
 
         #then-resultado
         assert resultado == esperado, f'Erro: {resultado} != {esperado}'
+
+    def test_calcular_bonus(self):
+        
+        #given-contexto
+        entrada = 1000
+        esperado = 100
+
+        #when-acao
+        funcionario_teste = Funcionario('Lucas', '19/05/2003', entrada)
+        resultado = funcionario_teste.calcular_bonus()
+
+        #then-resultado
+        assert resultado == esperado, f'Erro: {resultado} != {esperado}'
+
+    def test_calcular_bonus_exception(self):
+
+        #given-contexto
+        with pytest.raises(Exception):
+            entrada = 1000000000
+
+            #when-acao
+            funcionario_teste = Funcionario('Lucas', '19/05/2003', entrada)
+            resultado = funcionario_teste.calcular_bonus()
+
+            #then-resultado
+            assert resultado
+
     
